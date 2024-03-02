@@ -1,0 +1,45 @@
+{% include "main/base.html" %}
+{% block content %}
+
+<div class="container">
+    <h1 class="my-4">Product List</h1>
+    <div class="row">
+      
+    {% for product in products %}
+    
+    <div class="col-lg-3 col-md-3 pt-3">
+      <div class="card product-card">
+        <img src="{{product.images.url}} " class="card-img-top" alt="Product Image">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text">Price: <strong> R <span class="quantity">{{product.price}}</span></strong></p>
+          <p class="card-text">In stock: <span class="quantity">{{product.quantity_available}}</span></p>
+          <form action="{% url 'add_to_cart' product_id=product.id %}" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" min="1" value="1">
+        </div>
+        
+          <button class="btn btn-primary add-to-cart"> <i class="fa fa-cart-plus "></i>  </button>
+          <button class="btn btn-success buy-now">Buy</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  
+    {% endfor %}
+
+   
+      <!-- Dummy Product Cards -->
+        
+      
+      
+      
+      <!-- End Dummy Product Cards -->
+    </div>
+ 
+  </div>
+{% endblock %}

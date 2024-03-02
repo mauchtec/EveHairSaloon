@@ -1,0 +1,42 @@
+{% include "main/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="my-4">Shopping Cart</h1>
+    <div class="row">
+      <div class="col-lg-8">
+        {% for product in cart_items %}
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 class="card-title">{{product.product.name}}</h4>
+            <p class="card-text">{{product.product.description}}</p>
+            <p class="card-text">Quantity: {{product.quantity}}</p>
+            <p class="card-text">Price: {{product.product.price}}</p>
+            <button class="btn btn-danger remove-item">Remove</button>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 class="card-title">Product 2</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Quantity: 2</p>
+            <p class="card-text">Price: $20.00</p>
+            <button class="btn btn-danger remove-item">Remove</button>
+          </div>
+        </div>
+        <!-- Additional product cards can be added here -->
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Order Summary</h4>
+            <p class="card-text">Total Items: {{cart}}</p>
+            <p class="card-text">Total Price: {{total_price}}</p>
+            <button class="btn btn-primary checkout">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>{% endblock %}
