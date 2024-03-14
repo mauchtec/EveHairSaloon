@@ -35,21 +35,19 @@
 			</div>
 		</form>
 		<div class="navbar-nav ml-auto">
-			<a href="#" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
+			<a href=" {% url "home" %} " class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
 			<a href="#" class="nav-item nav-link"><i class="fa fa-gears"></i><span>Projects</span></a>
 			<a href="#" class="nav-item nav-link"><i class="fa fa-users"></i><span>Team</span></a>
 			<a href="#" class="nav-item nav-link"><i class="fa fa-pie-chart"></i><span>Reports</span></a>
 			<a href="#" class="nav-item nav-link"><i class="fa fa-briefcase"></i><span>Careers</span></a>
-			<a href="#" class="nav-item nav-link"><i class="fa fa-envelope"></i><span>Messages</span></a>		
-			<a href="#" class="nav-item nav-link"><i class="fa fa-bell"></i><span>Notifications</span></a>
-			<div class="nav-item dropdown">
-				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Antonio Moreno <b class="caret"></b></a>
-				<div class="dropdown-menu">
-					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-					<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
-					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
-					<div class="divider dropdown-divider"></div>
-					<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+			{% if user.is_authenticated %}
+			<a href="{% url "cart" %}" class="nav-item nav-link"><i class="fa fa-cart-plus"></i><span>Cart</span></a>	
+			<a href="#" class="nav-item nav-link"><i class="fa fa-gears"></i><span>Logout</span></a>
+			{% else %}
+			<a href=" {% url "registration" %} " class="nav-item nav-link"><i class="fa fa-users"></i><span>Registration</span></a>
+			<a href=" {% url "login" %} " class="nav-item nav-link"><i class="fa fa-gears"></i><span>Login</span></a>
+			{% endif %}
+			<a href="#" class="nav-item nav-link"><i class="fa fa-users"></i><span>Team</span></a>
 				</div>
 			</div>
 		</div>

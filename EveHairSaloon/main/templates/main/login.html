@@ -1,0 +1,20 @@
+{% include "main/base.html" %}
+
+{% block content %}
+
+<div class="signup-form">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group clearfix">
+			<label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+            <button type="submit" class="btn btn-primary btn-lg float-right">Sign in</button>
+        </div>		
+    </form>
+	<div class="hint-text">Don't have an account? <a href="#">Sign up here</a></div>
+
+	
+</div>
+
+
+{% endblock %}
